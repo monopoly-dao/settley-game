@@ -18,6 +18,7 @@
     "prepare": "husky install"
   },
   "dependencies": {
+    "@plurality-network/smart-profile-wallet": "^2.13.0",
     "clsx": "^2.0.0",
     "framer-motion": "^11.11.15",
     "lucide-react": "^0.438.0",

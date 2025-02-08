@@ -1,7 +1,8 @@
 'use client';
 
+import { PluralitySocialConnect } from '@plurality-network/smart-profile-wallet';
 import { motion } from 'framer-motion';
-import { Dice1, Dice5, Hotel, Twitter, Wallet } from 'lucide-react';
+import { Hotel, Twitter, Wallet } from 'lucide-react';
 import { useRouter } from 'next/navigation';
 import React, { FormEventHandler, useState } from 'react';
 
@@ -10,7 +11,7 @@ import React, { FormEventHandler, useState } from 'react';
 const LoginForm = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [isRolling, setIsRolling] = useState(false);
+  const [, setIsRolling] = useState(false);
   const router = useRouter();
 
   const handleLogin: FormEventHandler<HTMLFormElement> = (e) => {
@@ -22,6 +23,12 @@ const LoginForm = () => {
         router.push('/');
       }, 2000);
     }
+  };
+
+  const options = {
+    clientId: '0ee0e972-0b52-4154-9ca3-2f837969f1d3',
+    theme: 'light',
+    text: 'Connect Profile',
   };
 
   return (
@@ -68,7 +75,7 @@ const LoginForm = () => {
               onChange={(e) => setPassword(e.target.value)}
               className='w-full p-3 border-2 border-[#6B46C1] rounded-md focus:ring-2 focus:ring-[#6B46C1] bg-white bg-opacity-75'
             />
-            <button
+            {/* <button
               type='submit'
               className='w-full p-3 bg-[#6B46C1] text-white hover:bg-[#553C9A] flex items-center justify-center text-lg font-semibold transition-all duration-300 transform hover:scale-105'
               disabled={isRolling}
@@ -85,8 +92,13 @@ const LoginForm = () => {
                   <Dice1 className='w-8 h-8 mr-2' />
                   Roll to Start Your Adventure!
                 </>
-              )}
-            </button>
+              )} */}
+
+            <PluralitySocialConnect
+              options={options}
+              // onDataReturned={(data) => console.log({ data })}
+            />
+            {/* </button> */}
           </form>
 
           <div className='mt-6 text-center'>
