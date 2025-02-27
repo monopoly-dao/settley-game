@@ -26,10 +26,7 @@ export default function Page() {
   return (
     <>
       {showOnboarding && <OnboardingModal onClose={handleCloseOnboarding} />}
-      <div
-        style={{ backgroundColor: '#EDE9FF', minHeight: '100vh' }}
-        className='pb-24'
-      >
+      <div style={{ backgroundColor: '#EDE9FF' }} className=''>
         <div className='max-w-4xl mx-auto p-4 md:p-8'>
           {/* Header + Balance */}
           <div className='flex items-center justify-between mb-8'>
@@ -152,7 +149,7 @@ export default function Page() {
           </div>
 
           {/* Bottom Navigation */}
-          <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
+          {/* <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
             <div className='max-w-4xl mx-auto flex justify-around items-center'>
               <button className='flex flex-col items-center justify-center gap-1.5'>
                 <div className='w-10 h-10 rounded-xl bg-purple-100 flex items-center justify-center'>
@@ -188,7 +185,7 @@ export default function Page() {
                 <span className='text-xs text-gray-400'>Learn</span>
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>

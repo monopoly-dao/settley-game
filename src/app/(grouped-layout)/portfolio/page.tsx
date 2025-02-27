@@ -1,17 +1,13 @@
 'use client';
 
 import {
-  BookOpen,
   CircleDollarSign,
   HandCoins,
   HelpCircle,
-  Home,
   Info,
-  Trophy,
   Users,
   Wallet,
 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const properties = [
@@ -57,13 +53,13 @@ const properties = [
 ];
 
 export default function Page() {
-  const router = useRouter();
-  const [activeProperty, setActiveProperty] = useState<number | null>(null);
+  // const router = useRouter();
+  const [, setActiveProperty] = useState<number | null>(null);
   const [showTip, setShowTip] = useState<number | null>(null);
 
   return (
     <>
-      <div className='min-h-screen bg-gradient-to-b from-purple-100 to-purple-200/40 p-2 sm:p-4'>
+      <div className=' bg-gradient-to-b from-purple-100 to-purple-200/40 p-2 sm:p-4'>
         <div className='max-w-4xl mx-auto space-y-4 sm:space-y-6'>
           {/* Portfolio Overview */}
           <div className='bg-gradient-to-br from-white/90 to-purple-50/50 backdrop-blur-sm w-full'>
@@ -99,7 +95,9 @@ export default function Page() {
                               text: "Join Settley and start with $10,000 in property investment tokens - I'll get a bonus too!",
                               url: 'https://settley.com/invite',
                             })
-                            .catch((err) => console.log('Error sharing:', err));
+                            .catch(() => {
+                              // console.log('Error sharing:', err)
+                            });
                         }}
                       >
                         <Users className='w-3 h-3' />
@@ -245,7 +243,7 @@ export default function Page() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
+      {/* <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
         <div className='max-w-4xl mx-auto flex justify-around items-center'>
           <button
             onClick={() => router.push('/')}
@@ -281,7 +279,7 @@ export default function Page() {
             <span className='text-xs text-gray-400'>Learn</span>
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

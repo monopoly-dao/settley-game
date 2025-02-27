@@ -1,11 +1,10 @@
 'use client';
 
-import { BookOpen, CircleDollarSign, Home, Trophy } from 'lucide-react';
-import { useRouter } from 'next/navigation';
+import { CircleDollarSign, Home, Trophy } from 'lucide-react';
 import { ReactNode } from 'react';
 
 export default function Page() {
-  const router = useRouter();
+  // const router = useRouter();
 
   const PropertyCard = ({
     icon,
@@ -29,7 +28,7 @@ export default function Page() {
 
   return (
     <>
-      <div className='min-h-screen bg-[#f2eeff] p-4 sm:p-8 pb-24'>
+      <div className='bg-[#f2eeff] p-4 sm:p-8 !pb-24 overflow-y-auto'>
         <div className='max-w-3xl mx-auto'>
           <div className='mb-8'>
             <h1 className='text-2xl font-bold'>How to Play Settley</h1>
@@ -232,7 +231,7 @@ export default function Page() {
         </div>
       </div>
 
-      <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
+      {/* <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
         <div className='max-w-4xl mx-auto flex justify-around items-center'>
           <button
             onClick={() => router.push('/')}
@@ -268,7 +267,7 @@ export default function Page() {
             <span className='text-xs text-gray-700'>Learn</span>
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }

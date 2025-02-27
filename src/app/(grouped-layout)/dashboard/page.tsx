@@ -79,7 +79,7 @@ const Dashboard = () => {
         setNotifications(fetchedNotifications);
         setLeaderboard(fetchedLeaderboard); // Set leaderboard data
       } catch (error) {
-        console.error('Error fetching data:', error);
+        // console.error('Error fetching data:', error);
       }
     };
     fetchData();
@@ -88,7 +88,7 @@ const Dashboard = () => {
   if (!playerData) return <div>Loading...</div>; // Loading state
 
   return (
-    <div className='bg-gradient-to-r from-purple-500 to-blue-500 min-h-screen text-white p-6'>
+    <div className='bg-gradient-to-r from-purple-500 to-blue-500 text-white p-6'>
       <Link
         href='/board'
         className='flex items-center text-white mb-6 hover:text-yellow-300 transition-colors'

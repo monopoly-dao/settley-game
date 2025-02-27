@@ -2,34 +2,44 @@
 
 import { PluralitySocialConnect } from '@plurality-network/smart-profile-wallet';
 import { motion } from 'framer-motion';
-import { Hotel, Twitter, Wallet } from 'lucide-react';
-import { useRouter } from 'next/navigation';
-import React, { FormEventHandler, useState } from 'react';
+import { Hotel } from 'lucide-react';
+import { signIn } from 'next-auth/react';
+import React from 'react';
 
 // import ThemeToggle from './ThemeToggle';
 
 const LoginForm = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [, setIsRolling] = useState(false);
-  const router = useRouter();
+  // const [username, setUsername] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [, setIsRolling] = useState(false);
+  // const router = useRouter();
 
-  const handleLogin: FormEventHandler<HTMLFormElement> = (e) => {
-    e.preventDefault();
-    if (username && password) {
-      setIsRolling(true);
-      setTimeout(() => {
-        setIsRolling(false);
-        router.push('/');
-      }, 2000);
-    }
-  };
+  // const handleLogin: FormEventHandler<HTMLFormElement> = (e) => {
+  //   e.preventDefault();
+  //   if (username && password) {
+  //     setIsRolling(true);
+  //     setTimeout(() => {
+  //       setIsRolling(false);
+  //       router.push('/');
+  //     }, 2000);
+  //   }
+  // };
 
   const options = {
     clientId: '0ee0e972-0b52-4154-9ca3-2f837969f1d3',
     theme: 'light',
     text: 'Connect Profile',
   };
+
+  async function handleDataReturned(data: { pluralityToken: string }) {
+    // router.push('/');
+    // window.location.href = '/';
+    await signIn('login', {
+      pluralityToken: data.pluralityToken,
+      redirect: true,
+      callbackUrl: '/',
+    });
+  }
 
   return (
     <div className='min-h-screen bg-gradient-to-br from-[#E8E5FF] to-[#C7A2FF] flex items-center justify-center p-4 overflow-hidden'>
@@ -60,7 +70,14 @@ const LoginForm = () => {
             <h1 className='text-4xl font-bold text-[#6B46C1]'>Settley</h1>
           </motion.div>
 
-          <form onSubmit={handleLogin} className='space-y-4'>
+          <div className='flex justify-center'>
+            <PluralitySocialConnect
+              options={options}
+              onDataReturned={handleDataReturned}
+            />
+          </div>
+
+          {/* <form onSubmit={handleLogin} className='space-y-4'>
             <input
               type='text'
               placeholder='Username'
@@ -74,8 +91,8 @@ const LoginForm = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className='w-full p-3 border-2 border-[#6B46C1] rounded-md focus:ring-2 focus:ring-[#6B46C1] bg-white bg-opacity-75'
-            />
-            {/* <button
+            /> */}
+          {/* <button
               type='submit'
               className='w-full p-3 bg-[#6B46C1] text-white hover:bg-[#553C9A] flex items-center justify-center text-lg font-semibold transition-all duration-300 transform hover:scale-105'
               disabled={isRolling}
@@ -94,14 +111,10 @@ const LoginForm = () => {
                 </>
               )} */}
 
-            <PluralitySocialConnect
-              options={options}
-              // onDataReturned={(data) => console.log({ data })}
-            />
-            {/* </button> */}
-          </form>
+          {/* </button> */}
+          {/* </form> */}
 
-          <div className='mt-6 text-center'>
+          {/* <div className='mt-6 text-center'>
             <p className='text-sm text-gray-600 mb-3'>Or sign in with</p>
             <div className='flex justify-center space-x-4'>
               <button className='w-12 h-12 border-2 border-[#6B46C1] hover:bg-[#E8E5FF] transition-all duration-300'>
@@ -137,7 +150,7 @@ const LoginForm = () => {
                 <Twitter className='w-6 h-6 text-[#6B46C1]' />
               </button>
             </div>
-          </div>
+          </div> */}
         </div>
 
         <motion.div

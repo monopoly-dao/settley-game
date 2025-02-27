@@ -3,17 +3,13 @@
 import {
   Activity,
   ArrowUpRight,
-  BookOpen,
-  CircleDollarSign,
   Flame,
   HandCoins,
-  Home,
   Sparkles,
   ThumbsUp,
   Trophy,
   Zap,
 } from 'lucide-react';
-import { useRouter } from 'next/navigation';
 import { useState } from 'react';
 
 const activities = [
@@ -70,7 +66,7 @@ const activities = [
 ];
 
 export default function WatchScreen() {
-  const router = useRouter();
+  // const router = useRouter();
   const [selectedFilter, setSelectedFilter] = useState('all');
   const filters = ['all', 'hot', 'trades', 'rent', 'achievements'];
 
@@ -211,7 +207,7 @@ export default function WatchScreen() {
 
   return (
     <>
-      <div className='min-h-screen bg-gradient-to-b from-purple-100 to-purple-200/40 p-2 sm:p-4 pb-32'>
+      <div className='bg-gradient-to-b from-purple-100 to-purple-200/40 p-2 sm:p-4 !pb-32'>
         <div className='max-w-4xl mx-auto'>
           {/* Filters */}
           <div className='flex gap-2 mb-4 overflow-x-auto pb-2'>
@@ -249,7 +245,7 @@ export default function WatchScreen() {
       </div>
 
       {/* Bottom Navigation */}
-      <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
+      {/* <div className='fixed bottom-0 left-0 right-0 bg-white/90 backdrop-blur border-t px-4 py-3'>
         <div className='max-w-4xl mx-auto flex justify-around items-center'>
           <button
             onClick={() => router.push('/')}
@@ -285,7 +281,7 @@ export default function WatchScreen() {
             <span className='text-xs text-gray-400'>Learn</span>
           </button>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
